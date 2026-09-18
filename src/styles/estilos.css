@@ -1,0 +1,52 @@
+
+table{
+    width:80% ;
+    margin: auto ;
+    text-align: center;
+}
+
+th, td{
+    border: 1px solid gray;
+    padding: 10px;
+}
+
+
+th.data {
+min-width: 8rem;
+
+}
+
+.destaque{
+    text-align: center;
+    background-color:  coral;
+    color: darkblue;
+}
+
+.rodape {
+    text-align: center;
+    padding: 0.2em;
+    margin-top: 10em;    
+    background-color: lightgrey;
+}
+
+.menu {
+    text-align: center;
+    padding: 0.2em;
+    background-color: lightgrey;
+    margin-bottom: 20px;
+}
+
+.botao-menu {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 2em; /*acompanha tamanho do elemento pai*/
+}
+
+h2 {
+    font-size: 1.5em; /*acompanha tamanho do elemento pai*/
+}
