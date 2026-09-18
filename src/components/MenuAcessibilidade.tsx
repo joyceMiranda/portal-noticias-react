@@ -5,7 +5,7 @@ function MenuAcessibilidade() {
 
   const {
     menuAberto,
-    alterarMenu,
+    abrirMenu,
     aumentarFonte,
     diminuirFonte,
     alterarContraste
@@ -25,7 +25,7 @@ function MenuAcessibilidade() {
 
       <button
         id="btnAcessibilidade"
-        onClick={alterarMenu}
+        onClick={abrirMenu}
         aria-expanded={menuAberto}
       >
         <img

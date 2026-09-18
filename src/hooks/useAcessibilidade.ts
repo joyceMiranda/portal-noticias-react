@@ -2,24 +2,28 @@ import { useState } from "react"
 
 function useAcessibilidade() {
   const [menuAberto, setMenuAberto] = useState(false)
-  const [tamanhoFonte, setTamanhoFonte] = useState(15)
   const [contraste, setContraste] = useState(false)
+  const [zoom, setZoom] = useState(100)
 
-  function alterarMenu() {
+  function abrirMenu() {
     setMenuAberto(!menuAberto)
   }
 
   function aumentarFonte() {
-    const novoTamanho = tamanhoFonte + 2
-    setTamanhoFonte(novoTamanho)
-    document.body.style.fontSize = novoTamanho + "px"
-  }
+    const novoZoom = zoom + 10
 
-  function diminuirFonte() {
-    const novoTamanho = tamanhoFonte - 2
-    setTamanhoFonte(novoTamanho)
-    document.body.style.fontSize = novoTamanho + "px"
-  }
+    setZoom(novoZoom)
+
+    document.body.style.zoom = novoZoom + "%"
+    }
+
+    function diminuirFonte() {
+    const novoZoom = zoom - 10
+
+    setZoom(novoZoom)
+
+    document.body.style.zoom = novoZoom + "%"
+    }
 
   function alterarContraste() {
     setContraste(!contraste)
@@ -28,7 +32,7 @@ function useAcessibilidade() {
 
   return {
     menuAberto,
-    alterarMenu,
+    abrirMenu,
     aumentarFonte,
     diminuirFonte,
     alterarContraste
