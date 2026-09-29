@@ -12,17 +12,18 @@ function useAcessibilidade() {
   function aumentarFonte() {
     const novoZoom = zoom + 10
 
-    setZoom(novoZoom)
-
     document.body.style.zoom = novoZoom + "%"
+
+    setZoom(novoZoom)
     }
 
     function diminuirFonte() {
     const novoZoom = zoom - 10
 
-    setZoom(novoZoom)
-
     document.body.style.zoom = novoZoom + "%"
+
+        setZoom(novoZoom)
+
     }
 
   function alterarContraste() {
