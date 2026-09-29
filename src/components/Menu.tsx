@@ -1,10 +1,23 @@
+import { Link } from "react-router"
+
 function Menu() {
   return (
     <nav className="menu">
       <p>
-        <a href="#" className="botao-menu">
+        <Link
+          to="/"
+          className="botao-menu"
+        >
+          Home
+        </Link>
+        
+
+        <Link
+          to="/login"
+          className="botao-menu"
+        >
           Login
-        </a>
+        </Link>
       </p>
 
     </nav>

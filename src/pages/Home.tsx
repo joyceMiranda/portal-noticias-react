@@ -1,11 +1,10 @@
 import Menu from "../components/Menu"
-import Rodape from "../components/Rodape"
 
 function Home() {
   return (
     <>
       <h1 >
-        Página de Notícias
+        Portal de Notícias
       </h1>
 
       <Menu />
@@ -20,7 +19,6 @@ function Home() {
         </p>
       </main>
 
-      <Rodape />
     </>
   )
 }

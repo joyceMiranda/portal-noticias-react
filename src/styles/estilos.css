@@ -20,6 +20,7 @@ min-width: 8rem;
     text-align: center;
     background-color:  coral;
     color: darkblue;
+    padding: 0.5em;
 }
 
 .rodape {
@@ -41,6 +42,7 @@ min-width: 8rem;
     color: white;
     padding: 10px;
     text-decoration: none;
+    margin: 5px;
 }
 
 h1 {
@@ -49,4 +51,10 @@ h1 {
 
 h2 {
     font-size: 1.5em; /*acompanha tamanho do elemento pai*/
+}
+
+
+#divMensagem {
+   background-color: lightyellow;
+   margin: 1em;
 }
