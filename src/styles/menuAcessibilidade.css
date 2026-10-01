@@ -8,7 +8,9 @@
 }
 
 .skipLink:focus {
-    position: static;
+    position: absolute;
+  top: 1em;
+  left: 0.8em;
 }
 
 #btnAcessibilidade {

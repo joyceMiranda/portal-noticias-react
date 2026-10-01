@@ -38,6 +38,8 @@ min-width: 8rem;
 }
 
 .botao-menu {
+    display: inline-block;
+    width: 100px;
     background-color: black;
     color: white;
     padding: 10px;

@@ -1,13 +1,9 @@
-import Menu from "../components/Menu"
-
 function Home() {
   return (
     <>
       <h1 >
         Portal de Notícias
       </h1>
-
-      <Menu />
 
       <main id="conteudoPrincipal">
         <h2 className="destaque">

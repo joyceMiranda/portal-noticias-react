@@ -1,5 +1,4 @@
 import { Link } from "react-router"
-import Menu from "../components/Menu"
 import useLogin from "../hooks/useLogin"
 
 function Login() {
@@ -20,8 +19,6 @@ function Login() {
             Formulário de Login
         </h1>
 
-        <Menu />
-
         <main id="conteudoPrincipal">
 
             <div id="divMensagem" role="alert">
@@ -35,8 +32,8 @@ function Login() {
                     </label>
                     <input type="email" id="txtEmail" required  
                         value={email}
-                        onChange={(evento) =>
-                            setEmail(evento.target.value)
+                        onChange={(evento) =>{
+                            setEmail(evento.target.value)}
                     }
                     /> 
                 </div>
@@ -46,8 +43,8 @@ function Login() {
                     </label>
                     <input type="password" id="txtSenha" required
                         value={senha}
-                        onChange={(evento) =>
-                            setSenha(evento.target.value)
+                        onChange={(evento) =>{
+                            setSenha(evento.target.value)}
                         }
                     />
                 </div>

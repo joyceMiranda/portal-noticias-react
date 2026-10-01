@@ -1,6 +1,12 @@
 import { Link } from "react-router"
+import useLogin from "../hooks/useLogin"
 
 function Menu() {
+
+ const {realizarLogout } = useLogin();
+
+
+
   return (
     <nav className="menu">
       <p>
@@ -18,6 +24,15 @@ function Menu() {
         >
           Login
         </Link>
+
+          <Link
+          to="/login"
+          className="botao-menu"
+          onClick={realizarLogout}
+        >
+          Sair
+        </Link>
+        
       </p>
 
     </nav>

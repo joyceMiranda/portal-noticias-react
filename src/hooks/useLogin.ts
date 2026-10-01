@@ -44,6 +44,10 @@ function useLogin() {
     }
   }
 
+  function realizarLogout() {
+    localStorage.removeItem("usuarioLogado")
+  }
+
 
   return {
     email,
@@ -51,7 +55,8 @@ function useLogin() {
     senha,
     setSenha,
     mensagem,
-    realizarLogin
+    realizarLogin,
+    realizarLogout
   }
 }
 

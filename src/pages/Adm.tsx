@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router"
-import Menu from "../components/Menu"
 import { useEffect } from "react"
+import MenuAdm from "../components/MenuAdm"
 
 function Adm() {
 
   const navigate = useNavigate()
 
+  /*executado uma vez na montagem no componente*/
   useEffect(() => {
 
     const usuarioLogado =
@@ -15,21 +16,19 @@ function Adm() {
       navigate("/login")
     }
 
-  }, [navigate])
+  }, [])
+
+
   return (
     <>
-      
-      <main id="conteudoPrincipal">
 
         <h1 className="destaque">
           Área Administrativa
         </h1>
+      
+      <main id="conteudoPrincipal">
 
-        <Menu />
-
-        <p>
-          Em breve será exibido o conteúdo da área administrativa.
-        </p>
+        <MenuAdm />
 
       </main>
     </>

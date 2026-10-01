@@ -4,8 +4,9 @@ import App from "./App"
 import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Adm from "./pages/Adm"
+import TelaCadastroAdm from "./pages/TelaCadastroAdm"
 
-const router = createBrowserRouter([
+const rotas = createBrowserRouter([
   {
     path: "/",
     Component: App,
@@ -25,8 +26,14 @@ const router = createBrowserRouter([
         path: "adm",
         Component: Adm,
       },
+
+      {
+        path: "telaCadastroAdm",
+        Component: TelaCadastroAdm,
+      },
+
     ],
   },
 ])
 
-export default router
+export default rotas
