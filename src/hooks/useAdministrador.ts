@@ -10,7 +10,7 @@ function useAdministrador() {
 
   const navigate = useNavigate()
 
-  function cadastrarAdministrador(evento: any) {
+  function cadastrarAdministrador(evento: SubmitEvent) {
 
     evento.preventDefault()
 
@@ -20,13 +20,11 @@ function useAdministrador() {
       senha
     }
 
-    const administradoresSalvos = localStorage.getItem("administradores")
+    const listaAdministradores = JSON.parse(localStorage.getItem("listaAdministradores") || "[]"); 
 
-    const administradores = administradoresSalvos ? JSON.parse(administradoresSalvos) : []
+    listaAdministradores.push(administrador)
 
-    administradores.push(administrador)
-
-    localStorage.setItem("administradores", JSON.stringify(administradores)
+    localStorage.setItem("listaAdministradores", JSON.stringify(listaAdministradores)
     )
 
     setMensagem("Administrador cadastrado com sucesso!")
@@ -46,13 +44,10 @@ function useAdministrador() {
 
   function consultarAdministradores() {
 
-    const administradoresSalvos = localStorage.getItem("administradores")
+    const listaAdministradores = JSON.parse(localStorage.getItem("listaAdministradores") || "[]"); 
 
-    if (administradoresSalvos) {
-      return JSON.parse(administradoresSalvos)
-    }
+    return listaAdministradores;
 
-    return []
   }
 
 
