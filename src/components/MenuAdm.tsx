@@ -2,18 +2,32 @@ import { Link } from "react-router"
 
 function MenuAdm() {
   return (
-    <nav className="menu">
-      <p>
+    <>
+      <h1 className="destaque">
+        Área Administrativa
+      </h1>
+      
+      <nav className="menu">
+        <p>
 
-        <Link
-          to="/telaCadastroAdm"
-          className="botao-menu"
-        >
-          Cadastro de Administrador
-        </Link>
-      </p>
+          <Link
+            to="/telaCadastroAdm"
+            className="botao-menu"
+          >
+            Cadastro de Administrador
+          </Link>
 
-    </nav>
+          <Link
+            to="/telaListagemAdm"
+            className="botao-menu"
+          >
+            Listagem de Administradores
+          </Link>
+        </p>
+
+      </nav>
+  </>
+
   )
 }
 

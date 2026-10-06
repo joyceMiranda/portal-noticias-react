@@ -21,10 +21,6 @@ function Adm() {
 
   return (
     <>
-
-        <h1 className="destaque">
-          Área Administrativa
-        </h1>
       
       <main id="conteudoPrincipal">
 

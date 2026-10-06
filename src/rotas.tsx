@@ -5,6 +5,7 @@ import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Adm from "./pages/Adm"
 import TelaCadastroAdm from "./pages/TelaCadastroAdm"
+import TelaListagemAdm from "./pages/TelaListagemAdm"
 
 const rotas = createBrowserRouter([
   {
@@ -18,18 +19,23 @@ const rotas = createBrowserRouter([
       },
 
       {
-        path: "login",
+        path: "/login",
         Component: Login,
       },
 
       {
-        path: "adm",
+        path: "/adm",
         Component: Adm,
       },
 
       {
-        path: "telaCadastroAdm",
+        path: "/telaCadastroAdm",
         Component: TelaCadastroAdm,
+      },
+
+      {
+        path: "/telaListagemAdm",
+        Component: TelaListagemAdm,
       },
 
     ],
