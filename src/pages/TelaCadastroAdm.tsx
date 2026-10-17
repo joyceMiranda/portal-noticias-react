@@ -1,5 +1,7 @@
+import { useLocation } from "react-router"
 import MenuAdm from "../components/MenuAdm"
 import useAdministrador from "../hooks/useAdministrador"
+import { useEffect } from "react"
 
 function TelaCadastroAdm() {
 
@@ -11,8 +13,21 @@ function TelaCadastroAdm() {
     senha,
     setSenha,
     mensagem,
-    cadastrarAdministrador
+    cadastrarAdministrador,
+    alterarAdministrador
   } = useAdministrador()
+
+  const location = useLocation()
+
+  const administrador = location.state?.administrador
+
+  useEffect(() => {
+    if (administrador) {
+      setNome(administrador.nome)
+      setEmail(administrador.email)
+      setSenha(administrador.senha)
+    }
+  }, [administrador])
 
   return (
     <>
@@ -22,14 +37,22 @@ function TelaCadastroAdm() {
       <main id="conteudoPrincipal">
 
         <h1>
-            Tela de Cadastro de Administradores
+            {administrador ? "Tela de Alteração de Administrador" : "Tela de Cadastro de Administradores"}
         </h1>
 
         <div id="divMensagem" role="alert">
           {mensagem}
         </div>
 
-        <form id="formCadastroAdm" onSubmit={cadastrarAdministrador}>
+        <form
+          id="formCadastroAdm"
+          onSubmit={(evento) => {
+              administrador
+                ? alterarAdministrador(evento, administrador.email)
+                : cadastrarAdministrador(evento)
+            }
+          }
+        >
 
           <div>
             <label htmlFor="txtNome">
@@ -75,7 +98,7 @@ function TelaCadastroAdm() {
 
           <div>
             <button type="submit">
-              Cadastrar
+              {administrador ? "Alterar" : "Cadastrar"}
             </button>
           </div>
 

@@ -3,6 +3,7 @@ import {
 } from "react"
 
 import { useNavigate } from "react-router"
+import type Administrador from "../interfaces/Administrador"
 
 function useLogin() {
 
@@ -16,10 +17,17 @@ function useLogin() {
 
     evento.preventDefault()
 
-    if (
-      email == "adm@gmail.com" &&
-      senha == "123456"
-    ) {
+    const listaAdministradores = JSON.parse(
+      localStorage.getItem("listaAdministradores") || "[]"
+    )
+
+    const administrador = listaAdministradores.find(
+      (adm: Administrador) => adm.email === email && adm.senha === senha
+    )
+
+
+
+    if (administrador) {
 
       setMensagem(
         "Login realizado com sucesso"

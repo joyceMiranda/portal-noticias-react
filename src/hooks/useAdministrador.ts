@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router"
+import type Administrador from "../interfaces/Administrador"
 
 function useAdministrador() {
 
@@ -10,7 +11,7 @@ function useAdministrador() {
 
   const navigate = useNavigate()
 
-  function cadastrarAdministrador(evento: SubmitEvent) {
+  function cadastrarAdministrador(evento: React.SubmitEvent<HTMLFormElement>) {
 
     evento.preventDefault()
 
@@ -42,13 +43,61 @@ function useAdministrador() {
     setMensagem("")
   }
 
-  function consultarAdministradores() {
+  function buscarAdministradores(): Administrador[] {
 
     const listaAdministradores = JSON.parse(localStorage.getItem("listaAdministradores") || "[]"); 
 
     return listaAdministradores;
 
   }
+
+  function excluirAdministrador(email: string) {
+      const listaAdministradores = buscarAdministradores()
+
+      const novaLista = listaAdministradores.filter(
+        (administrador) => administrador.email != email)
+
+      localStorage.setItem(
+        "listaAdministradores",
+        JSON.stringify(novaLista)
+      )
+      
+      
+    }
+
+    function alterarAdministrador(
+      evento: React.SubmitEvent<HTMLFormElement>,
+      email: string
+    ) {
+      evento.preventDefault()
+
+      const listaAdministradores = buscarAdministradores()
+
+      const novaLista = listaAdministradores.map(
+        (administrador) => {
+          if (administrador.email == email) {
+            return {
+              nome,
+              email,
+              senha,
+            }
+          }
+
+          return administrador
+        }
+      )
+
+      localStorage.setItem(
+        "listaAdministradores",
+        JSON.stringify(novaLista)
+      )
+
+      setMensagem("Administrador alterado com sucesso!")
+
+      setTimeout(() => {
+        navigate("/telaListagemAdm")
+      }, 1000)
+    }
 
 
     return {
@@ -61,7 +110,9 @@ function useAdministrador() {
       mensagem,
       setMensagem,
       cadastrarAdministrador,
-      consultarAdministradores
+      buscarAdministradores,
+      excluirAdministrador,
+      alterarAdministrador
     }
 }
 

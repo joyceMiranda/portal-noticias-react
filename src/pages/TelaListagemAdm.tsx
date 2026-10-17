@@ -1,13 +1,19 @@
+import { useNavigate } from "react-router"
 import MenuAdm from "../components/MenuAdm"
 import useAdministrador from "../hooks/useAdministrador"
+import { useState } from "react"
 
 function TelaListaAdm() {
 
 const {
-    consultarAdministradores
+    buscarAdministradores,
+    excluirAdministrador,
   } = useAdministrador()
 
-  const administradores = consultarAdministradores()
+  const [listaAdministradores, setListaAdministradores] = useState(buscarAdministradores())
+
+  const navigate = useNavigate()
+
 
   return (
     <>
@@ -26,14 +32,13 @@ const {
             <tr>
               <th>Nome</th>
               <th>E-mail</th>
-              <th>Senha</th>
+              <th colSpan={2}>Ações</th>
             </tr>
           </thead>
 
           <tbody>
 
-            {administradores.map(
-              (administrador: any) => (
+            {listaAdministradores.map((administrador) => (
 
                 <tr key={administrador.email}>
 
@@ -46,11 +51,39 @@ const {
                   </td>
 
                   <td>
-                    {administrador.senha}
+
+                    <button
+                      type="button"
+                      onClick={() =>
+                        navigate("/telaCadastroAdm", {
+                          state: { administrador },
+                        })
+                      }
+                    >
+                      Alterar
+                    </button>
+</td>
+
+                  <td>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const confirmar = window.confirm(
+                          `Deseja excluir o administrador ${administrador.nome}?`
+                        )
+
+                        if (confirmar) {
+                          excluirAdministrador(administrador.email)
+                          setListaAdministradores(buscarAdministradores())
+                        }
+                      }}
+                    >
+                      Excluir
+                    </button>
                   </td>
 
                 </tr>
-              )
+            )
             )}
 
           </tbody>
