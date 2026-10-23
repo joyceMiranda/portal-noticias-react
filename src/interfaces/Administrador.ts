@@ -1,5 +1,6 @@
 export default interface Administrador {
-  nome: string
-  email: string
-  senha: string
+  id: string;
+  nome: string;
+  email: string;
+  senha: string;
 }

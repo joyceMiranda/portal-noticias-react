@@ -7,13 +7,14 @@ import type Administrador from "../interfaces/Administrador"
 
 function useLogin() {
 
+  const [id, setId] = useState("")
   const [email, setEmail] = useState("")
   const [senha, setSenha] = useState("")
   const [mensagem, setMensagem] = useState("")
 
   const navigate = useNavigate()
 
-  function realizarLogin(evento: any) {
+  function realizarLogin(evento: React.SubmitEvent<HTMLFormElement>) {
 
     evento.preventDefault()
 
@@ -22,7 +23,7 @@ function useLogin() {
     )
 
     const administrador = listaAdministradores.find(
-      (adm: Administrador) => adm.email === email && adm.senha === senha
+      (adm: Administrador) => adm.id == id && adm.senha == senha
     )
 
 
@@ -58,6 +59,8 @@ function useLogin() {
 
 
   return {
+    id,
+    setId,
     email,
     setEmail,
     senha,

@@ -6,6 +6,8 @@ import { useEffect } from "react"
 function TelaCadastroAdm() {
 
    const {
+    id,
+    setId,
     nome,
     setNome,
     email,
@@ -23,9 +25,17 @@ function TelaCadastroAdm() {
 
   useEffect(() => {
     if (administrador) {
+      // Tela de alteração: preenche os campos com os dados do administrador
+      setId(administrador.id)
       setNome(administrador.nome)
       setEmail(administrador.email)
       setSenha(administrador.senha)
+    }else {
+      // Tela de cadastro: limpa os campos
+      setId("")
+      setNome("")
+      setEmail("")
+      setSenha("")
     }
   }, [administrador])
 
@@ -37,7 +47,7 @@ function TelaCadastroAdm() {
       <main id="conteudoPrincipal">
 
         <h1>
-            {administrador ? "Tela de Alteração de Administrador" : "Tela de Cadastro de Administradores"}
+            {administrador ? "Tela de Alteração de Administrador" : "Tela de Cadastro de Administrador"}
         </h1>
 
         <div id="divMensagem" role="alert">
@@ -48,11 +58,21 @@ function TelaCadastroAdm() {
           id="formCadastroAdm"
           onSubmit={(evento) => {
               administrador
-                ? alterarAdministrador(evento, administrador.email)
+                ? alterarAdministrador(evento, administrador.id)
                 : cadastrarAdministrador(evento)
             }
           }
         >
+
+          <div>
+
+            <input
+              type="hidden"
+              id="txtID"
+              value={id}
+              onChange={(evento) => setId(evento.target.value)}
+            />
+          </div>
 
           <div>
             <label htmlFor="txtNome">

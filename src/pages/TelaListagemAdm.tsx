@@ -40,7 +40,7 @@ const {
 
             {listaAdministradores.map((administrador) => (
 
-                <tr key={administrador.email}>
+                <tr key={administrador.id}>
 
                   <td>
                     {administrador.nome}
@@ -69,11 +69,11 @@ const {
                       type="button"
                       onClick={() => {
                         const confirmar = window.confirm(
-                          `Deseja excluir o administrador ${administrador.nome}?`
+                          "Deseja excluir o administrador " + administrador.nome + "?"
                         )
 
                         if (confirmar) {
-                          excluirAdministrador(administrador.email)
+                          excluirAdministrador(administrador.id)
                           setListaAdministradores(buscarAdministradores())
                         }
                       }}

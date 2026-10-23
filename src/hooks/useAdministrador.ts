@@ -4,6 +4,7 @@ import type Administrador from "../interfaces/Administrador"
 
 function useAdministrador() {
 
+  const [id, setId] = useState("")
   const [nome, setNome] = useState("")
   const [email, setEmail] = useState("")
   const [senha, setSenha] = useState("")
@@ -15,11 +16,12 @@ function useAdministrador() {
 
     evento.preventDefault()
 
-    const administrador = {
-      nome,
-      email,
-      senha
-    }
+    const administrador: Administrador = {
+        id: crypto.randomUUID(),
+        nome,
+        email,
+        senha
+      }
 
     const listaAdministradores = JSON.parse(localStorage.getItem("listaAdministradores") || "[]"); 
 
@@ -32,11 +34,11 @@ function useAdministrador() {
 
     setTimeout(() => {
         limparCampos()
-        navigate("/telaCadastroAdm")
       }, 1000)
   }
 
   function limparCampos() {
+    setId("")
     setNome("")
     setEmail("")
     setSenha("")
@@ -51,11 +53,11 @@ function useAdministrador() {
 
   }
 
-  function excluirAdministrador(email: string) {
+  function excluirAdministrador(id: string) {
       const listaAdministradores = buscarAdministradores()
 
       const novaLista = listaAdministradores.filter(
-        (administrador) => administrador.email != email)
+        (administrador) => administrador.id != id)
 
       localStorage.setItem(
         "listaAdministradores",
@@ -67,7 +69,7 @@ function useAdministrador() {
 
     function alterarAdministrador(
       evento: React.SubmitEvent<HTMLFormElement>,
-      email: string
+      id: string
     ) {
       evento.preventDefault()
 
@@ -75,15 +77,19 @@ function useAdministrador() {
 
       const novaLista = listaAdministradores.map(
         (administrador) => {
-          if (administrador.email == email) {
+          if (administrador.id == id) {
             return {
+              id,
               nome,
               email,
               senha,
             }
+          }else{
+
+            return administrador
+          
           }
 
-          return administrador
         }
       )
 
@@ -101,6 +107,8 @@ function useAdministrador() {
 
 
     return {
+      id,
+      setId,  
       nome,
       setNome,
       email,
